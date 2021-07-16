@@ -3,7 +3,7 @@ import { createReducerCase } from '@base/features/base-decorator';
 import { createReducer, createActions } from 'reduxsauce';
 import { ApplicationState } from 'actions';
 import {
-	WeatherState, TypesNames, ActionCreator, SetTempAction
+	WeatherState, TypesNames, ActionCreator, SetTempAction, MySagaAction
 } from './interface';
 // import { debug } from 'webpack';
 
@@ -22,13 +22,15 @@ export const WeatherActions = Creators;
 /* ------------- Initial State ------------- */
 
 const INITIAL_STATE = createDraft<WeatherState>({
-	temp: ''
+	temp: '',
+	city:''
 });
 
 /* ------------- Selectors ------------- */
 
 export const weatherSelector = {
-	selectTemp: (state: ApplicationState) => state.weather.temp
+	selectTemp: (state: ApplicationState) => state.weather.temp,
+	selectCity: (state: ApplicationState) => state.weather.city
 };
 
 /* ------------- Reducers ------------- */
@@ -38,8 +40,14 @@ const setTempReducer = (draft: Draft<WeatherState>, action: SetTempAction) => {
 	draft.temp = temp
 };
 
+const mySagaReducer = (draft: Draft<WeatherState>, action: MySagaAction) => {
+	const { city } = action;
+	draft.city = city
+};
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer<any, any>(INITIAL_STATE, {
-	[TypesNames.SET_TEMP]: createReducerCase(setTempReducer)
+	[TypesNames.SET_TEMP]: createReducerCase(setTempReducer),
+	[TypesNames.MY_SAGA]: createReducerCase(mySagaReducer)
 });

@@ -9,6 +9,9 @@ import { ApplicationState } from 'actions';
 import { WeatherActions, weatherSelector } from 'actions/weather';
 import { Dispatch } from 'redux';
 import { MySagaFunction } from 'actions/weather/interface';
+import { MoveToNextStepFunction } from 'actions/flowManager/interface';
+import { FlowManagerActions } from 'actions/flowManager';
+
 
 type Props = InjectedFormProps;
 
@@ -20,6 +23,8 @@ export interface OwnProps extends Props {
 	formValues: any;
 	mySaga: typeof MySagaFunction;
 	temperat: {};
+	cityy: string
+	moveToNextStep: typeof MoveToNextStepFunction;
 }
 
 class MyPage extends React.Component<OwnProps, State> {
@@ -30,27 +35,6 @@ class MyPage extends React.Component<OwnProps, State> {
 			changeValue: ''
 		};
 	}
-	// API_KEY = '96049cd709454de681c71335211607'
-	// getWeather = async () => {
-	// 	let currentCity = this.props.formValues;
-	// 	let weather: any = {}
-	// 	let temp = ''
-
-	// 	if (currentCity != undefined) {
-	// 		(async () => {
-	// 			const response = await fetch(
-	// 				`http://api.weatherapi.com/v1/current.json?key=${this.API_KEY}&q=${currentCity.cities.title}`)
-	// 			weather = await response.json()
-	// 			temp = weather.current.temp_c
-	// 			// this.setState({ temp })
-	// 		})()
-	// 	}
-	// }
-
-	componentDidUpdate() {
-
-	}
-
 	render() {
 		const {
 			handleSubmit, submitting, temperat
@@ -66,7 +50,6 @@ class MyPage extends React.Component<OwnProps, State> {
 					onChange={(e: any) => {
 						setTimeout(() => {
 							let { mySaga: mySaga, formValues } = this.props
-							// debugger
 							let city = formValues != undefined ? formValues.cities.title : undefined
 							if (city == undefined) { debugger }
 							mySaga(city)
@@ -77,7 +60,10 @@ class MyPage extends React.Component<OwnProps, State> {
 				/>
 				<h1>{temperat != '' ? `Current temperature: ${temperat}C` : null}</h1>
 				<div>
-					<button type="submit" disabled={submitting}>
+					<button type="submit" disabled={submitting} onClick={() => {
+						let { moveToNextStep } = this.props
+						moveToNextStep()
+					}}>
 						Submit
 					</button>
 				</div>
@@ -86,18 +72,20 @@ class MyPage extends React.Component<OwnProps, State> {
 	}
 
 	handleSubmit() {
-		// let currentCity = this.props.formValues;
-		// console.log(currentCity, "city");
+		// let { moveToNextStep } = this.props
+		// moveToNextStep()
 	}
 }
 
 export default baseConnectForm(MyPage,
 	(state: ApplicationState) => ({
 		temperat: weatherSelector.selectTemp(state),
+		cityy: weatherSelector.selectCity(state),
 		formValues: getFormValues("FormExampleForm")(state)
 	}),
 	(dispatch: Dispatch) => ({
 		mySaga: (city: string) => dispatch(WeatherActions.mySaga(city)),
+		moveToNextStep: (step?: string) => dispatch(FlowManagerActions.moveToNextStep(step))
 	}),
 	{
 		form: 'FormExampleForm'

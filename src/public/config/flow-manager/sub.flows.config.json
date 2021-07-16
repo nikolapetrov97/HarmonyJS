@@ -47,5 +47,27 @@
         "onCheck": "isTowXiaomiInCart"
       }
     ]
+  },
+  {
+    "flowName": "pageOneFlow",
+    "runInFlowTypes": ["COP"],
+    "color": "#FF5546",
+    "conditions": [
+      {
+        "conditionName": "goToPageOne",
+        "onCheck": "goToPageOne"
+      }
+    ]
+  },
+  {
+    "flowName": "pageTwoFlow",
+    "runInFlowTypes": ["COP"],
+    "color": "#FF5546",
+    "conditions": [
+      {
+        "conditionName": "goToPageTwo",
+        "onCheck": "goToPageTwo"
+      }
+    ]
   }
 ]

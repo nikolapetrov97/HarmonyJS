@@ -60,11 +60,11 @@
     },
     "PAGE_ONE": {
       "name": "MY_PAGE",
-      "path": "/mypage"
+      "path": "/pageone"
     },
     "PAGE_TWO": {
       "name": "MY_PAGE",
-      "path": "/mypage"
+      "path": "/pagetwo"
     }
   }
 }

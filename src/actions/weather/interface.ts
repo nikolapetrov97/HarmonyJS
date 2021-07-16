@@ -3,6 +3,7 @@ import { Action } from 'redux';
 /* ------------- Define Actions and State ------------- */
 export interface WeatherState {
 	temp: string
+	city: string
 }
 
 export enum TypesNames {

@@ -38,7 +38,20 @@ export default (
 				exact
 				path={RoutesPath.MY_PAGE}
 				step={stepTypes.MY_PAGE.name}
-				component={MyPage} />
+				component={MyPage}
+			/>
+			<Route
+				exact
+				path={RoutesPath.PAGE_ONE}
+				step={stepTypes.PAGE_ONE.name}
+				component={() => <h1>PAGE FOR SOFIA</h1>}
+			/>
+			<Route
+				exact
+				path={RoutesPath.PAGE_TWO}
+				step={stepTypes.PAGE_TWO.name}
+				component={() => <h1>PAGE FOR PLOVDIV</h1>}
+			/>
 			<Route exact path={RoutesPath.ERROR_PAGE} component={() => <ErrorPage />} />
 		</Switch>
 	</App>

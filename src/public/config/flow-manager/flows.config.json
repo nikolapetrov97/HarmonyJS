@@ -55,6 +55,23 @@
         "DEVICE_GALLERY",
         "CHECKOUT"
       ]
+    },
+    "pageOneFlow": {
+      "id": "11111111-5795-4d7f-9477-825d6217332f",
+      "description": "Page One Flow",
+      "steps": [
+        "MY_PAGE",
+        "PAGE_ONE"
+      ]
+    },
+    "pageTwoFLow": {
+      "id": "22222222-5795-4d7f-9477-825d6217332f",
+      "description": "Page Two Flow",
+      "steps": [
+        "MY_PAGE",
+        "PAGE_TWO"
+      ]
     }
+
   }
 }

@@ -5,7 +5,9 @@ enum RoutesPath {
 	CHECKOUT_SAMSUNG = '/checkout-samsung',
 	CHECKOUT_XIAOMI = '/checkout-xiaomi',
 	ERROR_PAGE = '/error-page',
-	MY_PAGE = '/mypage'
+	MY_PAGE = '/mypage',
+	PAGE_ONE = '/pageone',
+	PAGE_TWO = '/pagetwo'
 }
 
 export default RoutesPath;
