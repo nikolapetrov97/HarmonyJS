@@ -11,6 +11,7 @@ import { Dispatch } from 'redux';
 import { MySagaFunction } from 'actions/weather/interface';
 import { MoveToNextStepFunction } from 'actions/flowManager/interface';
 import { FlowManagerActions } from 'actions/flowManager';
+import { flowManager } from '@base/features';
 
 type Props = InjectedFormProps;
 
@@ -27,6 +28,9 @@ export interface OwnProps extends Props {
 }
 
 class MyPage extends React.Component<OwnProps, State> {
+	componentDidMount() {
+		flowManager.endFlow();
+	}
 	render() {
 		const {
 			handleSubmit, submitting, temperat

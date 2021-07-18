@@ -1,7 +1,8 @@
 {
   "flowTypes": {
     "COP": "COP",
-    "CHQ": "CHQ"
+    "CHQ": "CHQ",
+    "MPF": "MPF"
   },
   "subFlowTypes": {
     "onlyRunInCHQExqmple": "onlyRunInCHQExqmple",
@@ -55,14 +56,17 @@
       "path": "/EXAMPLE_ROUTE_Xiaomi_C"
     },
     "MY_PAGE": {
+      "displayName": "MY PAGE",
       "name": "MY_PAGE",
       "path": "/mypage"
     },
     "PAGE_ONE": {
+      "displayName": "PAGE ONE",
       "name": "MY_PAGE",
       "path": "/pageone"
     },
     "PAGE_TWO": {
+      "displayName": "PAGE TWO",
       "name": "MY_PAGE",
       "path": "/pagetwo"
     }

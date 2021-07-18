@@ -12,7 +12,7 @@ const { flowTypes, stepTypes } = FlowManagerConfig;
 export function* mySaga(action: MySagaAction) {
 	yield call(startFlow, {
 		type: TypesNames.START_FLOW,
-		flowType: flowTypes.COP,
+		flowType: flowTypes.MPF,
 		currentStep: stepTypes.MY_PAGE.name,
 	});
 	const { city } = action;
