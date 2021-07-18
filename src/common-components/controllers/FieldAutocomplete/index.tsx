@@ -14,14 +14,14 @@ class FieldAutocomplete extends React.Component<Props> {
 			{ title: 'Sofia' },
 			{ title: 'Plovdiv' },
 			{ title: 'Varna' },
-			{ title: 'Belgrad'}
+			{ title: 'Belgrad' }
 		];
 		const getSelectedOption = () => {
-			return cities.find((o: { title: any; }) => o.title === input.value);
+			return cities.find((o: { title: any }) => o.title === input.value);
 		};
 		const { input, meta, ...rest } = fieldData;
 		const { touched, error, warning } = meta;
-		const { onChange } = input
+		const { onChange } = input;
 		const errorMessage = touched ? (warning || error) : undefined;
 
 		return (
@@ -35,7 +35,7 @@ class FieldAutocomplete extends React.Component<Props> {
 				renderInput={(params) => {
 					return (
 						<TextField variant="outlined" {...params} {...rest} helperText={errorMessage} error={errorMessage} />
-					)
+					);
 				}}
 			/>
 		);

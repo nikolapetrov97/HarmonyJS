@@ -23,7 +23,7 @@ export const WeatherActions = Creators;
 
 const INITIAL_STATE = createDraft<WeatherState>({
 	temp: '',
-	city:''
+	city: ''
 });
 
 /* ------------- Selectors ------------- */
@@ -37,12 +37,12 @@ export const weatherSelector = {
 
 const setTempReducer = (draft: Draft<WeatherState>, action: SetTempAction) => {
 	const { temp } = action;
-	draft.temp = temp
+	draft.temp = temp;
 };
 
 const mySagaReducer = (draft: Draft<WeatherState>, action: MySagaAction) => {
 	const { city } = action;
-	draft.city = city
+	draft.city = city;
 };
 
 /* ------------- Hookup Reducers To Types ------------- */

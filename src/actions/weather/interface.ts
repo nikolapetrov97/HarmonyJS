@@ -2,8 +2,8 @@ import { Action } from 'redux';
 
 /* ------------- Define Actions and State ------------- */
 export interface WeatherState {
-	temp: string
-	city: string
+	temp: string;
+	city: string;
 }
 
 export enum TypesNames {
@@ -20,11 +20,11 @@ export interface ActionCreator {
 }
 
 export interface SetTempAction extends Action<TypesNames.SET_TEMP> {
-	temp: string
+	temp: string;
 }
 
 export interface MySagaAction extends Action<TypesNames.MY_SAGA> {
-	city: string
+	city: string;
 }
 
 /* ------------- Define Any Interfaces ------------- */

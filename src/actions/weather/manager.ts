@@ -1,10 +1,10 @@
-import { Store } from "@base/features";
-import { weatherSelector } from ".";
+import { Store } from '@base/features';
+import { weatherSelector } from 'actions/weather';
 
 export const goToPageOne = async () => {
-	const city = weatherSelector.selectCity(Store.getState())
+	const city = weatherSelector.selectCity(Store.getState());
 
-	if (city == "Sofia") {
+	if (city === 'Sofia') {
 		return Promise.resolve();
 	}
 
@@ -12,9 +12,9 @@ export const goToPageOne = async () => {
 };
 
 export const goToPageTwo = async () => {
-	const city = weatherSelector.selectCity(Store.getState())
+	const city = weatherSelector.selectCity(Store.getState());
 
-	if (city == "Plovdiv") {
+	if (city === 'Plovdiv') {
 		return Promise.resolve();
 	}
 

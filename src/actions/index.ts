@@ -5,7 +5,7 @@ import baseReducers, { BaseApplicationState } from '@base/features/base-reducers
 /* ------------- Import States ------------- */
 import { CatalogState } from 'actions/catalog/interface';
 import { CartState } from 'actions/cart/interface';
-import { WeatherState } from 'actions/weather/interface'
+import { WeatherState } from 'actions/weather/interface';
 /* ------------- Import Sagas ------------- */
 import { catalogSaga } from 'actions/catalog';
 import { flowManagerSaga } from 'actions/flowManager';

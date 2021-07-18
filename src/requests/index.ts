@@ -12,7 +12,7 @@ import { Device } from 'actions/catalog/interface';
 export interface Api {
 	getDevices: () => Promise<AxiosResponse>;
 	getDevicesMock: () => any;
-	getTemp: (city: String) => any;
+	getTemp: (city: string) => any;
 }
 
 export const createApi = (baseURL = config.ROOT_SERVER_URL): Api => ({

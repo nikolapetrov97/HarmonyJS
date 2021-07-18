@@ -12,29 +12,21 @@ import { MySagaFunction } from 'actions/weather/interface';
 import { MoveToNextStepFunction } from 'actions/flowManager/interface';
 import { FlowManagerActions } from 'actions/flowManager';
 
-
 type Props = InjectedFormProps;
 
 interface State {
-	changeValue: string
+	changeValue: boolean;
 }
 
 export interface OwnProps extends Props {
 	formValues: any;
 	mySaga: typeof MySagaFunction;
 	temperat: {};
-	cityy: string
+	cityy: string;
 	moveToNextStep: typeof MoveToNextStepFunction;
 }
 
 class MyPage extends React.Component<OwnProps, State> {
-	constructor(props: OwnProps) {
-		super(props);
-
-		this.state = {
-			changeValue: ''
-		};
-	}
 	render() {
 		const {
 			handleSubmit, submitting, temperat
@@ -47,23 +39,27 @@ class MyPage extends React.Component<OwnProps, State> {
 					name="cities"
 					type="text"
 					label="cities"
-					onChange={(e: any) => {
+					onChange={() => {
 						setTimeout(() => {
-							let { mySaga: mySaga, formValues } = this.props
-							let city = formValues != undefined ? formValues.cities.title : undefined
-							if (city == undefined) { debugger }
-							mySaga(city)
-							this.setState({ changeValue: e?.target.value })
+							const { mySaga, formValues } = this.props;
+							const city = formValues !== undefined ? formValues.cities.title : undefined;
+							mySaga(city);
 						}, 500);
 					}}
 					validate={required}
 				/>
-				<h1>{temperat != '' ? `Current temperature: ${temperat}C` : null}</h1>
+				<h1>{temperat !== '' ? `Current temperature: ${temperat}C` : null}</h1>
 				<div>
-					<button type="submit" disabled={submitting} onClick={() => {
-						let { moveToNextStep } = this.props
-						moveToNextStep()
-					}}>
+					<button
+						type="submit"
+						disabled={submitting}
+						onClick={
+							() => {
+								const { moveToNextStep } = this.props;
+								moveToNextStep();
+							}
+						}
+					>
 						Submit
 					</button>
 				</div>
@@ -81,7 +77,7 @@ export default baseConnectForm(MyPage,
 	(state: ApplicationState) => ({
 		temperat: weatherSelector.selectTemp(state),
 		cityy: weatherSelector.selectCity(state),
-		formValues: getFormValues("FormExampleForm")(state)
+		formValues: getFormValues('FormExampleForm')(state)
 	}),
 	(dispatch: Dispatch) => ({
 		mySaga: (city: string) => dispatch(WeatherActions.mySaga(city)),

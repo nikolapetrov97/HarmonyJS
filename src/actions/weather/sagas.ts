@@ -17,6 +17,5 @@ export function* mySaga(action: MySagaAction) {
 	});
 	const { city } = action;
 	const response: AxiosResponse = yield call(api.getTemp, city);
-	console.log(response.data.current.temp_c, "responseeeeeee");
-	yield put(WeatherActions.setTemp(response.data.current.temp_c))
+	yield put(WeatherActions.setTemp(response.data.current.temp_c));
 }

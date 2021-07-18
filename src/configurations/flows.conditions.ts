@@ -8,4 +8,4 @@ export {
 export {
 	goToPageOne,
 	goToPageTwo
-} from 'actions/weather/manager'
+} from 'actions/weather/manager';
