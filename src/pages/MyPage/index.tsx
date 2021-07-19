@@ -44,11 +44,9 @@ class MyPage extends React.Component<OwnProps, State> {
 					type="text"
 					label="cities"
 					onChange={() => {
-						setTimeout(() => {
-							const { mySaga, formValues } = this.props;
-							const city = formValues !== undefined ? formValues.cities.title : undefined;
-							mySaga(city);
-						}, 500);
+						const { mySaga, formValues } = this.props;
+						const city = formValues !== undefined ? formValues.cities.title : undefined;
+						mySaga(city);
 					}}
 					validate={required}
 				/>

@@ -1,8 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
-import { Field, BaseFieldProps, WrappedFieldProps } from 'redux-form';
+import {
+	Field, BaseFieldProps, WrappedFieldProps, change
+} from 'redux-form';
 import { TextField, TextFieldProps } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Store } from '@base/features';
 
 export type Props = {
 
@@ -31,7 +34,10 @@ class FieldAutocomplete extends React.Component<Props> {
 				value={getSelectedOption()}
 				getOptionLabel={(option) => option.title}
 				style={{ width: 300 }}
-				onChange={(event, newValue) => onChange(newValue)}
+				onChange={async (event, newValue) => {
+					await Store.dispatch(change('FormExampleForm', 'cities', newValue));
+					onChange(newValue);
+				}}
 				renderInput={(params) => {
 					return (
 						<TextField variant="outlined" {...params} {...rest} helperText={errorMessage} error={errorMessage} />
